@@ -1,0 +1,16 @@
+Click==7.0
+Flask==1.0.2
+Flask-SocketIO==3.2.1
+itsdangerous==1.1.0
+Jinja2==2.10
+MarkupSafe==1.1.1
+numpy==1.15.3
+oauthlib==3.0.1
+python-engineio==3.5.0
+python-socketio==4.0.0
+requests==2.12.4
+requests-oauthlib==0.7.0
+scikit-learn==0.20.0
+scipy==1.1.0
+six==1.10.0
+Werkzeug==0.15.0
