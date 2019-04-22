@@ -4,6 +4,7 @@ import menu_screen
 import login_screen
 
 
+# Objet gérant la boucle principale de la fenetre
 class MainRuntime:
 
     def __init__(self):
@@ -12,7 +13,7 @@ class MainRuntime:
             'weidth': 640,
             'heigth': 480,
             'full_screen': False,
-            'screen_index': 0,
+            'screen_index': 0, #
             'stay_open': True,
             'fps': 60
         }
@@ -28,15 +29,16 @@ class MainRuntime:
 
         clock = pygame.time.Clock()
 
-        # maintient de la fenétre
+        # Boucle principale + garde la fenetre ouverte
         while self.settings['stay_open']:
-            # window.fill((0, 0, 0))
-            # clock.tick(self.settings['fps'])
+            window.fill((0, 0, 0)) # Clear the window (in black) between each fram
+            clock.tick(self.settings['fps']) # (optimisation) synchronise the loop for scaling to a given frame rate
             if not self.main_modules[self.settings['screen_index']].running:
-                self.main_modules[self.settings['screen_index']].show_screen()
-            for event in pygame.event.get():  # On parcours la liste de tous les événements reçus
+                self.main_modules[self.settings['screen_index']].show_screen() # lance le rendu d'image
+            self.main_modules[self.settings['screen_index']].render_screen() # Effectue un rendu d'image
+            for event in pygame.event.get():  # Parcours la liste de tous les événements reçus
                 if event.type == pygame.QUIT:  # Si un de ces événements est de type QUIT
-                    self.main_modules[self.settings['screen_index']].stop_jobs()
-                    self.main_modules[self.settings['screen_index']].wait_job_end()
-                    self.settings['stay_open'] = False
-            # pygame.display.flip()
+                    self.main_modules[self.settings['screen_index']].stop_jobs()  # Impose l'arret des processus pour la fenetre en cour de rendue
+                    self.main_modules[self.settings['screen_index']].wait_job_end()  # Attend que les processus soit terminé
+                    self.settings['stay_open'] = False  # Change l'état de la boucle principal
+            pygame.display.flip()  # Met a jour la fenetre

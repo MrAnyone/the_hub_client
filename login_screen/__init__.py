@@ -6,6 +6,7 @@ login_background_thread = None
 running = False
 
 
+# Initialise les objet gerant cette vue
 def init_screen(pygame_instance, option):
     global login_page_thread
     global login_background_thread
@@ -13,6 +14,15 @@ def init_screen(pygame_instance, option):
     login_background_thread = background.init_background(pygame_instance, option)
 
 
+# Permet d'afficher de manière synchroniser les rendus des différents objets gérer par le module
+def render_screen():
+    global login_page_thread
+    global login_background_thread
+    login_background_thread.render_part()
+    login_page_thread.render_part()
+
+
+# Permet de lancer les processus de rendu
 def show_screen():
     global login_page_thread
     global login_background_thread
@@ -22,6 +32,7 @@ def show_screen():
     login_background_thread.start()
 
 
+# Arrête proprement les processus de rendu
 def stop_jobs():
     global login_page_thread
     global login_background_thread
@@ -31,6 +42,7 @@ def stop_jobs():
     login_background_thread.kill()
 
 
+# Permet de s'assurer que les processus de rendu sont bien terminer
 def wait_job_end():
     global login_page_thread
     global login_background_thread
