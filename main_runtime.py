@@ -41,4 +41,8 @@ class MainRuntime:
                     self.main_modules[self.settings['screen_index']].stop_jobs()  # Impose l'arret des processus pour la fenetre en cour de rendue
                     self.main_modules[self.settings['screen_index']].wait_job_end()  # Attend que les processus soit terminé
                     self.settings['stay_open'] = False  # Change l'état de la boucle principal
+                elif event.type == pygame.KEYDOWN:
+                    self.main_modules[self.settings['screen_index']].trigger_input(event.key)
+                elif event.type == pygame.MOUSEBUTTONUP:
+                    self.main_modules[self.settings['screen_index']].trigger_click(event.pos)
             pygame.display.flip()  # Met a jour la fenetre

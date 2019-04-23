@@ -1,20 +1,34 @@
-from threading import Thread
+# from threading import Thread
+from common_modules.text_box import TextBox
 
 
 # Gére le contenue principale de la page de connection
-class Login(Thread):
+class Login:
 
     def __init__(self, pygame_instance, screen_option):
-        Thread.__init__(self)
+        # Thread.__init__(self)
         self.ready = True
+        self.screen_entity = {
+            'user_name': TextBox(pygame_instance, editable=True, hit_text='Username'),
+            'password': TextBox(pygame_instance),
+        }
 
     def run(self):
         while self.ready:
             # todo: affichage des champs de saisie de donnée + bouton de connexion + creation de compte et mdp oublier
             pass
 
+    def spread_mouse_click_event(self, mouse_position):
+        self.screen_entity['user_name'].trigger_click(mouse_position)
+        self.screen_entity['password'].trigger_click(mouse_position)
+
+    def spread_key_event(self, input_key):
+        self.screen_entity['user_name'].trigger_input(input_key)
+        self.screen_entity['password'].trigger_input(input_key)
+
     def kill(self):
         self.ready = False
 
     def render_part(self):
-        pass
+        self.screen_entity['user_name'].render_part()
+        self.screen_entity['password'].render_part()
