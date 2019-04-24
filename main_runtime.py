@@ -26,7 +26,6 @@ class MainRuntime:
         window = pygame.display.set_mode((self.settings['weidth'], self.settings['heigth']))
         for modules in self.main_modules:
             modules.init_screen(pygame, self.settings)
-
         clock = pygame.time.Clock()
 
         # Boucle principale + garde la fenetre ouverte

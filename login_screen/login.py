@@ -10,7 +10,7 @@ class Login:
         self.ready = True
         self.screen_entity = {
             'user_name': TextBox(pygame_instance, editable=True, hit_text='Username'),
-            'password': TextBox(pygame_instance),
+            'password': TextBox(pygame_instance, editable=True, pos=(0, 150), hit_text='Password', entry_hider='*'),
         }
 
     def run(self):
@@ -21,10 +21,12 @@ class Login:
     def spread_mouse_click_event(self, mouse_position):
         self.screen_entity['user_name'].trigger_click(mouse_position)
         self.screen_entity['password'].trigger_click(mouse_position)
+        pass
 
     def spread_key_event(self, input_key):
         self.screen_entity['user_name'].trigger_input(input_key)
         self.screen_entity['password'].trigger_input(input_key)
+        pass
 
     def kill(self):
         self.ready = False
@@ -32,3 +34,4 @@ class Login:
     def render_part(self):
         self.screen_entity['user_name'].render_part()
         self.screen_entity['password'].render_part()
+        pass
