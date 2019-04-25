@@ -10,10 +10,10 @@ class MainRuntime:
     def __init__(self):
         pygame.init()
         self.settings = {
-            'weidth': 640,
-            'heigth': 480,
+            'width': 1920,
+            'height': 1080,
             'full_screen': False,
-            'screen_index': 0, #
+            'screen_index': 0,
             'stay_open': True,
             'fps': 60
         }
@@ -23,7 +23,7 @@ class MainRuntime:
 
         # todo: une barre de chargement peut etre mise en place ici pour modeliser
         #  l'avancement de l'initialisation de tout les modules
-        window = pygame.display.set_mode((self.settings['weidth'], self.settings['heigth']))
+        window = pygame.display.set_mode((self.settings['width'], self.settings['height']), flags= pygame.FULLSCREEN if self.settings['full_screen'] else 0)
         for modules in self.main_modules:
             modules.init_screen(pygame, self.settings)
         clock = pygame.time.Clock()
