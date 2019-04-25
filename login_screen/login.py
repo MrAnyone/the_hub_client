@@ -6,10 +6,10 @@ from common_modules.button import Button
 # Gére le contenue principale de la page de connection
 class Login:
 
-    def __init__(self, pygame_instance, screen_setings):
+    def __init__(self,screen_setings):
         # Thread.__init__(self)
         self.ready = True
-        self.pygame_instance = pygame_instance
+        # self.pygame_instance = pygame_instance
         user_name_pos = (int((screen_setings['width']/2) - 170), int((screen_setings['height']/2) - 35))
         password_pos = (int((screen_setings['width']/2) - 170), int((screen_setings['height']/2) + 5))
         confirm_button_pos = (int((screen_setings['width']/2) + 90), int((screen_setings['height']/2) - 15))
@@ -55,9 +55,14 @@ class Login:
     def kill(self):
         self.ready = False
 
-    def render_part(self):
-        self.screen_entity['user_name'].render_part(self.pygame_instance.display.get_surface())
-        self.screen_entity['password'].render_part(self.pygame_instance.display.get_surface())
-        self.screen_entity['confirm_button'].render_part(self.pygame_instance.display.get_surface())
-        self.screen_entity['new_account'].render_part(self.pygame_instance.display.get_surface())
-        self.screen_entity['password_forget'].render_part(self.pygame_instance.display.get_surface())
+    def render_part(self, window):
+        # self.screen_entity['user_name'].render_part(self.pygame_instance.display.get_surface())
+        # self.screen_entity['password'].render_part(self.pygame_instance.display.get_surface())
+        # self.screen_entity['confirm_button'].render_part(self.pygame_instance.display.get_surface())
+        # self.screen_entity['new_account'].render_part(self.pygame_instance.display.get_surface())
+        # self.screen_entity['password_forget'].render_part(self.pygame_instance.display.get_surface())
+        self.screen_entity['user_name'].render_part(window)
+        self.screen_entity['password'].render_part(window)
+        self.screen_entity['confirm_button'].render_part(window)
+        self.screen_entity['new_account'].render_part(window)
+        self.screen_entity['password_forget'].render_part(window)

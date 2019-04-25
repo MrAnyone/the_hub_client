@@ -2,7 +2,7 @@ running = False
 
 
 # Voir le module login_screen
-def init_screen(pygame_instance, option):
+def init_screen(option):
     pass
 
 
