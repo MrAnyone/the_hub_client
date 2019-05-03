@@ -79,14 +79,12 @@ class BackGroundRuntime(Thread):
         self.foreground_surface_elem_4 = pygame.transform.scale(self.foreground_surface_elem_4, (screen_option['width'], screen_option['height']))
         self.foreground_surface_elem_5 = pygame.image.load('./login_screen/background/assets/fantasy-2048-x-1536_004.png').convert_alpha()
         self.foreground_surface_elem_5 = pygame.transform.scale(self.foreground_surface_elem_5, (screen_option['width'], screen_option['height']))
-
         self.foreground_surface_elem_6 = pygame.image.load('./login_screen/background/assets/fantasy-2048-x-1536_005.png').convert_alpha()
         self.foreground_surface_elem_6 = pygame.transform.scale(self.foreground_surface_elem_6, (screen_option['width'], screen_option['height']))
         self.foreground_surface_elem_7 = pygame.image.load('./login_screen/background/assets/fantasy-2048-x-1536_006.png').convert_alpha()
         self.foreground_surface_elem_7 = pygame.transform.scale(self.foreground_surface_elem_7, (screen_option['width'], screen_option['height']))
         self.foreground_surface_elem_8 = pygame.image.load('./login_screen/background/assets/fantasy-2048-x-1536_007.png').convert_alpha()
         self.foreground_surface_elem_8 = pygame.transform.scale(self.foreground_surface_elem_8, (screen_option['width'], screen_option['height']))
-
 
         self.rel_x_rock_foreground = 0
         self.rel_x_rock_middle = 0

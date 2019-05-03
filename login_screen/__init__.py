@@ -1,8 +1,7 @@
 from . import background
 from .login import Login
 
-login_page_thread = None
-login_background_thread = None
+splash_page = None
 running = False
 
 
@@ -28,7 +27,7 @@ def show_screen():
     global login_background_thread
     global running
     running = True
-    # login_page_thread.start()
+    login_page_thread.run()
     login_background_thread.start()
 
 

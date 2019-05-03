@@ -15,7 +15,7 @@ class Button:
         #     self.button_rect = pygame.draw.circle(self.text.box_surface, color, pos, radius, width=0)
 
     # todo: change the color of the box if the cursor is hover it
-    def cursor_hover(self):
+    def on_hover(self):
         pass
 
     # decoration for on click action

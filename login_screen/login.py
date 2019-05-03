@@ -1,4 +1,5 @@
 # from threading import Thread
+import sound_manager
 from common_modules.text_box import TextBox
 from common_modules.button import Button
 
@@ -6,7 +7,7 @@ from common_modules.button import Button
 # Gére le contenue principale de la page de connection
 class Login:
 
-    def __init__(self,screen_setings):
+    def __init__(self, screen_setings):
         # Thread.__init__(self)
         self.ready = True
         # self.pygame_instance = pygame_instance
@@ -24,9 +25,11 @@ class Login:
             'new_account': Button(background_color=(0, 0, 0, 0), size=12, box_size=(80, 20), text_pos=(0, 5),
                                   text='New account', pos=new_button_pos, text_underline=True)
         }
+        self.screen_setings = screen_setings
+        sound_manager.SoundMgr.load_new_sound(name='main_theme', path='./common_assets/sound/musics/Out of my dreams NES.wav')
 
     def run(self):
-        pass
+        sound_manager.SoundMgr.run_track('main_theme', -1)
 
     def spread_mouse_click_event(self, mouse_position):
         self.screen_entity['user_name'].trigger_click(mouse_position)

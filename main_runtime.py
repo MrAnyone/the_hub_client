@@ -1,5 +1,7 @@
 import pygame
 # import game_modules
+import splash_screen
+import sound_manager
 import menu_screen
 import login_screen
 
@@ -9,6 +11,12 @@ import login_screen
 class MainRuntime:
 
     def __init__(self):
+        self.main_modules = [
+            splash_screen,
+            login_screen,
+            menu_screen,
+        ]
+        sound_manager.init_manadger()
         pygame.init()
         self.settings = {
             'width': 720,
@@ -16,6 +24,8 @@ class MainRuntime:
             'full_screen': False,
             'screen_index': 0,
             'stay_open': True,
+            'music_volume': 0.5,
+            'sound_volume': 0.5,
             'fps': 60
         }
         # self.settings = {
@@ -26,7 +36,6 @@ class MainRuntime:
         #     'stay_open': True,
         #     'fps': 60
         # }
-        self.main_modules = [login_screen, menu_screen]
 
     def run(self):
 
