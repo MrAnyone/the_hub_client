@@ -7,4 +7,8 @@ get started
 2 => `py main.py`
 
 
-font => `Jamma 8x16.ttf`
+font => `Jamma 8x16.ttf
+
+# Warning connue
+
+libpng warning: iCCP: known incorrect sRGB profile => du a la gestion de l'icon il semblerais que le fichier donner par bryoche cause se warning 
