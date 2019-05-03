@@ -65,7 +65,6 @@ class BackGroundRuntime(Thread):
     def __init__(self, screen_option):
         Thread.__init__(self)
         self.ready = True
-        # self.window = pygame_instance.display.get_surface()
         self.screen_option = screen_option
         self.background_surface = pygame.image.load('./login_screen/background/assets/fantasy-2048-x-1536_008.png').convert_alpha()
         self.middle_ground_surface = None
@@ -86,25 +85,38 @@ class BackGroundRuntime(Thread):
         self.foreground_surface_elem_8 = pygame.image.load('./login_screen/background/assets/fantasy-2048-x-1536_007.png').convert_alpha()
         self.foreground_surface_elem_8 = pygame.transform.scale(self.foreground_surface_elem_8, (screen_option['width'], screen_option['height']))
 
+        # self.icon = pygame.image.load('./common_assets/laughing_screen/laughing screen_front_pixelized.png').convert_alpha()
+        self.icon = pygame.image.load('./common_assets/laughing_screen/laughing screen_front.png').convert_alpha()
+        self.icon_size = max(int(screen_option['width'] * 0.2), int(screen_option['height'] * 0.2))
+        self.icon = pygame.transform.scale(self.icon, (self.icon_size, self.icon_size))
+
+        self.icon_pos = (
+            ((screen_option['width'] // 2) - (self.icon_size // 2)),
+            ((screen_option['height'] // 2) - self.icon_size - 35)
+        )
+        self.icon_scaller = 1
+
         self.rel_x_rock_foreground = 0
         self.rel_x_rock_middle = 0
         self.rel_x_rock_background = 0
 
         self.rel_x_cloud_foreground = 0
-        self.rel_x_cloud_middle = 0
-        self.rel_x_cloud_background = 0
+
 
     # Boucle principal du thread/processus
     def run(self):
+        pulse = self.icon_size * 0.01
         bckground_pos = 0
         speed = 0.02
         while self.ready:
             self.rel_x_cloud_foreground = bckground_pos % self.screen_option['width']
-            # # self.rel_x_rock_foreground = bckground_pos % self.screen_option['width']
             self.rel_x_rock_foreground = (bckground_pos//2) % self.screen_option['width']
             self.rel_x_rock_middle = (bckground_pos//3) % self.screen_option['width']
             self.rel_x_rock_background = (bckground_pos//4) % self.screen_option['width']
+            self.icon_scaller += pulse/6
             bckground_pos -= 1
+            if self.icon_scaller >= 10 or self.icon_scaller <= 1:
+                pulse = -pulse
             if bckground_pos == 4 * self.screen_option['width']:
                 print('reset indecx')
                 bckground_pos = 0
@@ -142,3 +154,11 @@ class BackGroundRuntime(Thread):
             window.blit(self.foreground_surface_elem_6, (self.rel_x_cloud_foreground, 0))
         # pygame.draw.line(window, (0, 0, 0), (self.rel_x_rock_foreground, 0), (self.rel_x_rock_foreground, self.screen_option['height']), 3)
         window.blit(self.foreground_surface_elem_6, (self.rel_x_cloud_foreground - self.foreground_surface_elem_6.get_rect().width, 0))
+
+        icon_to_render = pygame.transform.scale(self.icon, (round(self.icon_size + self.icon_scaller), round(self.icon_size + self.icon_scaller)))
+        icon_pos = (
+            ((self.screen_option['width'] // 2) - ((self.icon_size + self.icon_scaller) // 2)),
+            ((self.screen_option['height'] // 2) - (self.icon_size + self.icon_scaller) - 35)
+        )
+
+        window.blit(icon_to_render, icon_pos)

@@ -22,7 +22,7 @@ class MainRuntime:
             'width': 720,
             'height': 360,
             'full_screen': False,
-            'screen_index': 0,
+            'screen_index': 1,
             'stay_open': True,
             'music_volume': 0.5,
             'sound_volume': 0.5,
@@ -31,7 +31,7 @@ class MainRuntime:
         # self.settings = {
         #     'width': 1920,
         #     'height': 1080,
-        #     'full_screen': True,
+        #     'full_screen': False,
         #     'screen_index': 0,
         #     'stay_open': True,
         #     'fps': 60
@@ -43,6 +43,9 @@ class MainRuntime:
         #  l'avancement de l'initialisation de tout les modules
         window = pygame.display.set_mode((self.settings['width'], self.settings['height']), flags= pygame.FULLSCREEN if self.settings['full_screen'] else 0)
         pygame.display.set_caption('The Hub')
+        icon = pygame.image.load('./common_assets/laughing_screen/laughing screen_front.png')
+        icon = pygame.transform.scale(icon, (32, 32))
+        pygame.display.set_icon(icon)
         for modules in self.main_modules:
             modules.init_screen(self.settings)
         clock = pygame.time.Clock()
