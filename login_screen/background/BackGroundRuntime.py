@@ -85,6 +85,7 @@ class BackGroundRuntime(Thread):
         self.foreground_surface_elem_8 = pygame.image.load('./login_screen/background/assets/fantasy-2048-x-1536_007.png').convert_alpha()
         self.foreground_surface_elem_8 = pygame.transform.scale(self.foreground_surface_elem_8, (screen_option['width'], screen_option['height']))
 
+        # todo: ameliorer l'animation de l'icone
         # self.icon = pygame.image.load('./common_assets/laughing_screen/laughing screen_front_pixelized.png').convert_alpha()
         self.icon = pygame.image.load('./common_assets/laughing_screen/laughing screen_front.png').convert_alpha()
         self.icon_size = max(int(screen_option['width'] * 0.2), int(screen_option['height'] * 0.2))
