@@ -27,6 +27,7 @@ class Login:
         }
         self.screen_setings = screen_setings
         sound_manager.SoundMgr.load_new_sound(name='main_theme', path='./common_assets/sound/musics/Out of my dreams NES.wav')
+        sound_manager.SoundMgr.volume(name='main_theme', volume=0.2)
 
     def run(self):
         sound_manager.SoundMgr.run_track('main_theme', -1)

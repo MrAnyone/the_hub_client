@@ -20,11 +20,11 @@ class Splash(Thread):
         self.mask = pygame.Surface((self.size * 2, self.size * 2))
         self.mask.fill((0, 0, 0, 125))
         sound_manager.SoundMgr.load_new_sound(name='splash_screen', path='./common_assets/sound/musics/Crowd Laughing.wav')
+        sound_manager.SoundMgr.volume(name='splash_screen', volume=0.2)
 
     def run(self):
         counter = 0
         alfa_value = 125
-        # self.mask.set_alpha(alfa_value)
         sound_manager.SoundMgr.run_track(name='splash_screen')
         while self.ready and counter != 10:
             if alfa_value >= 0:
@@ -32,22 +32,19 @@ class Splash(Thread):
             alfa_value -= 12
             counter += 1
             time.sleep(1)
-        if self.ready:
-            self.settings['screen_index'] = 1
         sound_manager.SoundMgr.stop_track(name='splash_screen')
         sound_manager.SoundMgr.remove_track(name='splash_screen')
+        self.settings['screen_index'] = 1
 
     def spread_mouse_click_event(self, mouse_position):
-        self.settings['screen_index'] = 1
+        self.ready = False
 
     def spread_key_event(self, input_key):
-        self.settings['screen_index'] = 1
+        self.ready = False
 
     def kill(self):
         self.ready = False
 
     def render_part(self, window):
-        # copy = self.laughting_screen.copy().convert_alpha()
-        # copy.blit(self.mask, (0, 0))
         window.blit(self.laughting_screen, self.pos)
         window.blit(self.mask, self.pos)
