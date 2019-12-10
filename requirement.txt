@@ -6,6 +6,7 @@ Jinja2==2.10
 MarkupSafe==1.1.1
 numpy==1.15.3
 oauthlib==3.0.1
+pygame==1.9.6
 python-engineio==3.5.0
 python-socketio==4.0.0
 requests==2.12.4

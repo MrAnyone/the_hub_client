@@ -4,7 +4,7 @@ from common_modules.button import Button
 import login_screen
 
 
-# Gére le contenue principale de la page de connection
+# todo: call networkdriver
 class Login:
 
     def __init__(self, screen_setings):
