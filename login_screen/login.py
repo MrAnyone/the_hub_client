@@ -1,7 +1,7 @@
 # from threading import Thread
-import sound_manager
 from common_modules.text_box import TextBox
 from common_modules.button import Button
+import login_screen
 
 
 # Gére le contenue principale de la page de connection
@@ -26,13 +26,11 @@ class Login:
                                   text='New account', pos=new_button_pos, text_underline=True)
         }
         self.screen_setings = screen_setings
-        sound_manager.SoundMgr.load_new_sound(name='main_theme', path='./common_assets/sound/musics/Out of my dreams NES.wav')
-        sound_manager.SoundMgr.volume(name='main_theme', volume=0.2)
 
     def run(self):
-        sound_manager.SoundMgr.run_track('main_theme', -1)
+        pass
 
-    def spread_mouse_click_event(self, mouse_position):
+    def spread_mouse_click_event(self, mouse_position, sub_part_to_render_index):
         self.screen_entity['user_name'].trigger_click(mouse_position)
         self.screen_entity['password'].trigger_click(mouse_position)
 
@@ -46,10 +44,12 @@ class Login:
 
         @onclick_new(mouse_position)
         def button_click():
+            login_screen.sub_part_to_render_index = 1
             print('switch view: nouvelle utilisateur')
 
         @onclick_forget(mouse_position)
         def button_click():
+            login_screen.sub_part_to_render_index = 2
             print('switch view: mdp oublier')
 
     def spread_key_event(self, input_key):

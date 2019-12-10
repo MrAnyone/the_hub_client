@@ -23,8 +23,7 @@ class TextBox:
         self.entry_hider = entry_hider
         self.color = color
         self.text_underline = text_underline
-        self.background_color = pygame.Color(background_color[0], background_color[1],
-                                                 background_color[2], background_color[3])
+        self.background_color = pygame.Color(background_color[0], background_color[1], background_color[2], background_color[3])
         self.font = pygame.font.Font(font_path, size)
         if self.text_underline:
             self.font.set_underline(True)
