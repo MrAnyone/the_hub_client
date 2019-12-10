@@ -7,7 +7,7 @@ get started
 2 => `py main.py`
 
 
-font => `Jamma 8x16.ttf
+font => `Jamma 8x16.ttf`
 
 # Warning connue
 
