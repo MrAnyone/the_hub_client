@@ -8,4 +8,4 @@
 #  - upload de module de jeux
 #  - note des jeux + commentaire
 #  - channel de discution
-# - temp estimer: 3h - 4h
+#  - temps estimer: 30 min

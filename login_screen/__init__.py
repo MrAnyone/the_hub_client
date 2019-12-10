@@ -8,7 +8,7 @@ splash_page = None
 running = False
 login_background_thread = None
 sub_part_to_render = [None, None, None]
-sub_part_to_render_index = 1
+sub_part_to_render_index = 0
 
 
 # Initialise les objet gerant cette vue

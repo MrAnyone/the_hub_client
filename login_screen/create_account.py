@@ -3,6 +3,7 @@ from common_modules.button import Button
 import login_screen
 
 
+# todo: call networkdriver
 class CreateAccount:
     def __init__(self, screen_setings):
         # (x, y)
@@ -48,12 +49,13 @@ class CreateAccount:
 
         @onclick_login(mouse_position)
         def button_click():
-            print('switch view: lobby')
+            login_screen.sub_part_to_render_index = 0
+            print('switch view: send inscription and go back')
 
         @onclick_forget(mouse_position)
         def button_click():
             login_screen.sub_part_to_render_index = 0
-            print('switch view: mdp oublier')
+            print('switch view: go back')
 
     def render_part(self, window):
         self.screen_entity['user_name'].render_part(window)
